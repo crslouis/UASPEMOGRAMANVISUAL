@@ -1,0 +1,266 @@
+@model List<GrandLineBooks.Controllers.CustomerReportItem>
+@{
+    ViewData["Title"] = "Laporan Pembayaran";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+    <div class="admin-card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">
+            <i class="fas fa-money-check-alt"></i> Laporan Pembayaran Laundry
+        </h4>
+        <div class="d-flex gap-2">
+            <button onclick="window.print()" class="btn btn-admin-primary">
+                <i class="fas fa-print"></i> Cetak Laporan
+            </button>
+            <a asp-action="Dashboard" class="btn btn-admin-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
+        </div>
+    </div>
+
+    <div class="admin-card-body">
+        <form method="get" asp-action="PaymentReport" class="row g-3 mb-4 align-items-end">
+            <div class="col-md-4">
+                <label for="startDate" class="form-label">Tanggal Mulai</label>
+                <input type="date"
+                       id="startDate"
+                       name="startDate"
+                       value="@(ViewBag.StartDate ?? string.Empty)"
+                       class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label for="endDate" class="form-label">Tanggal Selesai</label>
+                <input type="date"
+                       id="endDate"
+                       name="endDate"
+                       value="@(ViewBag.EndDate ?? string.Empty)"
+                       class="form-control" />
+            </div>
+            <div class="col-md-4 d-flex gap-2">
+                <button type="submit" class="btn btn-admin-primary flex-fill mt-4">
+                    <i class="fas fa-filter"></i> Terapkan Filter
+                </button>
+                <a asp-action="PaymentReport" class="btn btn-outline-secondary flex-fill mt-4">
+                    <i class="fas fa-undo"></i> Reset
+                </a>
+            </div>
+        </form>
+
+        <div class="report-summary mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="summary-box">
+                        <h5><i class="fas fa-receipt"></i> Total Transaksi Dibayar</h5>
+                        <p class="summary-value">@ViewBag.TotalOrders</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="summary-box">
+                        <h5><i class="fas fa-money-bill-wave"></i> Total Pendapatan</h5>
+                        <p class="summary-value">Rp @(((decimal)ViewBag.TotalRevenue).ToString("N0"))</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered report-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Konsumen</th>
+                        <th>Hari/Tanggal</th>
+                        <th>Jam</th>
+                        <th>Total Pembayaran</th>
+                        <th>ID Pesanan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">Belum ada data pembayaran untuk filter yang dipilih.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td><strong>@item.CustomerName</strong></td>
+                                <td>@item.OrderDate.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("id-ID"))</td>
+                                <td>@item.OrderDate.ToString("HH:mm:ss")</td>
+                                <td><strong>Rp @item.TotalPayment.ToString("N0")</strong></td>
+                                <td><small>@item.OrderId.Substring(0, 8)</small></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr class="table-active">
+                        <td colspan="4" class="text-end"><strong>TOTAL:</strong></td>
+                        <td><strong>Rp @(((decimal)ViewBag.TotalRevenue).ToString("N0"))</strong></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="report-footer mt-4">
+            <p class="text-muted">
+                <small>
+                    <i class="fas fa-info-circle"></i>
+                    Laporan dicetak pada: @DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss", new System.Globalization.CultureInfo("id-ID"))
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .report-summary {
+        margin-bottom: 30px;
+    }
+
+    .summary-box {
+        background: linear-gradient(135deg, #e8f5ff 0%, #d6f7f4 100%);
+        border: 2px solid rgba(19, 111, 189, 0.15);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .summary-box h5 {
+        color: #0d2b45;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .summary-box h5 i {
+        color: #136fbd;
+        margin-right: 8px;
+    }
+
+    .summary-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #136fbd;
+        margin: 0;
+    }
+
+    .report-table {
+        background: white;
+        border-collapse: collapse;
+    }
+
+    .report-table thead {
+        background: linear-gradient(135deg, #e8f5ff 0%, #d6f7f4 100%);
+    }
+
+    .report-table thead th {
+        color: #0d2b45;
+        font-weight: bold;
+        padding: 12px;
+        border: 1px solid rgba(19, 111, 189, 0.2);
+    }
+
+    .report-table tbody td {
+        padding: 12px;
+        border: 1px solid rgba(19, 111, 189, 0.1);
+        color: #0d2b45;
+    }
+
+    .report-table tbody tr:nth-child(even) {
+        background: #f6fbff;
+    }
+
+    .report-table tfoot {
+        background: rgba(19, 111, 189, 0.08);
+    }
+
+    .report-table tfoot td {
+        font-weight: bold;
+        color: #0d2b45;
+        padding: 12px;
+    }
+
+    .report-footer {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 2px solid rgba(19, 111, 189, 0.15);
+    }
+
+    /* Print Styles */
+    @@media print {
+        body {
+            background: white !important;
+        }
+
+        .admin-sidebar,
+        .admin-topbar,
+        .admin-card-header,
+        .btn,
+        .report-footer,
+        form {
+            display: none !important;
+        }
+
+        .admin-content {
+            margin-left: 0 !important;
+            padding: 0 !important;
+        }
+
+        .admin-card {
+            box-shadow: none !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .report-table thead th,
+        .report-table tbody td,
+        .report-table tfoot td {
+            border: 1px solid #000 !important;
+            padding: 8px !important;
+        }
+
+        .report-table thead {
+            background: #e0e0e0 !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .report-table tbody tr:nth-child(even) {
+            background: #f5f5f5 !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .summary-box {
+            border: 1px solid #000 !important;
+            page-break-inside: avoid;
+        }
+
+        @@page {
+            margin: 1cm;
+        }
+
+        h4 {
+            page-break-after: avoid;
+        }
+
+        .report-table tbody tr {
+            page-break-inside: avoid;
+        }
+    }
+</style>
+
+
+

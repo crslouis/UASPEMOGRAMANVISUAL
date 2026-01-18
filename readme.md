@@ -1,0 +1,182 @@
+# Profil Carlos Louis Fernando
+
+## Informasi Pribadi
+
+| **Atribut**      | **Detail**               |
+|------------------|--------------------------|
+| **Nama**         | Carlos Louis Fernando    |
+| **NIM**          | 312310458                |
+| **Kelas**        | TI.23.A5                 |
+| **Mata Kuliah**  | Pemrograman Visual       |
+
+## Deskripsi
+
+Halo! Saya Carlos Louis Fernando, mahasiswa di program studi Teknik Informatika, kelas TI.23.A5. Saya sedang mengikuti mata kuliah **Pemrograman Visual**, yang berfokus pada pengembangan aplikasi menggunakan prinsip-prinsip desain visual untuk menciptakan antarmuka pengguna yang menarik dan fungsional.
+
+Sebagai bagian dari mata kuliah ini, saya mengembangkan beberapa proyek yang memanfaatkan konsep-konsep desain antarmuka visual, serta pengembangan aplikasi berbasis grafis dan multimedia.
+
+## Tujuan dan Fokus Proyek
+
+Dalam mata kuliah **Pemrograman Visual**, saya fokus pada:
+- **Desain Antarmuka Pengguna (UI)**: Mempelajari bagaimana merancang antarmuka yang intuitif dan user-friendly.
+- **Pemrograman Aplikasi Grafis**: Menggunakan berbagai framework dan alat untuk membuat aplikasi dengan elemen grafis interaktif.
+- **Pengembangan Multimedia**: Menyusun elemen-elemen visual dan multimedia yang menyatu dalam aplikasi untuk meningkatkan pengalaman pengguna.
+
+## Keterampilan
+
+| **Keahlian**           | **Detail**                      |
+|------------------------|---------------------------------|
+| **Bahasa Pemrograman** | Python, JavaScript, HTML, CSS   |
+| **Framework**          | React, Bootstrap, Tkinter       |
+| **Alat Desain**        | Figma, Adobe XD, Photoshop      |
+| **Database**           | MongoDB, MySQL                 |
+
+## Kontak
+
+Jika kamu ingin berdiskusi atau memiliki pertanyaan terkait proyek atau mata kuliah ini, jangan ragu untuk menghubungi saya melalui:
+- **Email**: [carloslouis9999@gmail.com](carloslouis9999@gmail.com)
+
+---
+
+Terima kasih telah mengunjungi profil saya. Saya berharap bisa belajar dan berkolaborasi lebih banyak dalam bidang Pemrograman Visual!
+
+
+# MarshLaundryDb
+
+MarshLaundryDb adalah platform layanan laundry berbasis web yang menyediakan berbagai fitur untuk memudahkan pengelolaan laundry, baik bagi pelanggan maupun pengelola. Dengan sistem yang terintegrasi dan mudah digunakan, MarshLaundryDb membantu mempermudah proses pemesanan, pengelolaan laundry, dan pembayaran secara efektif.
+
+## 1. Setting Web Service dan Configuration Web
+
+Untuk memulai penggunaan MarshLaundryDb, pastikan kamu telah melakukan konfigurasi web service dan pengaturan aplikasi dengan benar. Berikut adalah langkah-langkah konfigurasi yang perlu dilakukan:
+
+### 1.1 **Install Dependencies (Untuk Backend dan Frontend)**
+
+- **Backend (ASP.NET)**:
+   - Pastikan kamu sudah menginstall **.NET SDK** dan **Runtime** pada mesin kamu.
+   - Gunakan perintah berikut untuk menginstall dependensi di sisi backend:
+     ```bash
+     dotnet restore
+     ```
+   - Untuk menjalankan server backend, gunakan perintah berikut:
+     ```bash
+     dotnet run
+     ```
+   - Pastikan bahwa server ASP.NET berjalan pada `http://localhost:5258` (atau sesuai dengan pengaturan port yang telah dikonfigurasi).
+
+- **Frontend (Bootstrap)**:
+   - Proyek ini menggunakan **Bootstrap** untuk desain responsif dan antarmuka pengguna yang ramah.
+   - Untuk menjalankan frontend secara lokal, cukup buka file `index.html` di browser atau gunakan server lokal jika ingin lebih interaktif.
+   - Untuk menginstall dependensi frontend jika diperlukan:
+     ```bash
+     npm install
+     ```
+
+### 1.2 **Konfigurasi Database dengan MongoDB Compass**
+
+- **Instalasi MongoDB Compass**:
+   - Pastikan **MongoDB Compass** sudah terpasang di mesin kamu untuk memanage database.
+   - Jika belum, kamu bisa mengunduhnya [di sini](https://www.mongodb.com/products/compass).
+
+- **Pengaturan Database**:
+   - Buka file konfigurasi di `config/database.js` dan pastikan untuk mengonfigurasi URI MongoDB kamu.
+   - Contoh konfigurasi:
+     ```javascript
+     const mongoose = require('mongoose');
+     mongoose.connect('mongodb://localhost:27017/marshlaundrydb', { useNewUrlParser: true, useUnifiedTopology: true });
+     ```
+
+- **Jalankan MongoDB**:
+   - Jika menggunakan MongoDB secara lokal, pastikan server MongoDB kamu berjalan dengan perintah:
+     ```bash
+     mongod
+     ```
+   - Jika menggunakan MongoDB Atlas, pastikan kamu mendapatkan connection string dan menggantinya di `database.js`.
+
+### 1.3 **Menjalankan Server**
+
+- Setelah konfigurasi di atas selesai, kamu dapat menjalankan server menggunakan perintah:
+   ```bash
+   dotnet run
+
+2. Nama Project dan Penjelasan Penggunaannya
+
+Nama Project: MarshLaundryDb
+
+Penjelasan:
+
+MarshLaundryDb adalah aplikasi web yang dirancang untuk membantu usaha laundry dalam mengelola layanan mereka secara lebih efisien. Platform ini memungkinkan pelanggan untuk membuat pemesanan laundry secara online, memantau status laundry mereka, dan melakukan pembayaran secara terintegrasi. Admin dapat mengelola pesanan, memperbarui status laundry, serta menghasilkan laporan transaksi dengan mudah.
+
+Alasan Menggunakan MarshLaundryDb:
+
+Otomatisasi Proses: Mengurangi kesalahan manual dan meningkatkan efisiensi pengelolaan laundry.
+
+Pengalaman Pengguna yang Lebih Baik: Dengan antarmuka yang responsif dan mudah digunakan, pelanggan dapat dengan mudah melakukan pemesanan dan memantau status laundry mereka.
+
+Laporan dan Analitik: Memungkinkan pengelola untuk menghasilkan laporan tentang transaksi, status laundry, dan kinerja usaha secara real-time.
+
+3. Bisnis Proses
+
+Proses bisnis dalam MarshLaundryDb meliputi beberapa tahapan penting sebagai berikut:
+
+3.1 Pelanggan Membuat Pesanan
+
+Pelanggan melakukan pemesanan laundry melalui antarmuka pengguna yang mudah dipahami. Mereka memilih jenis layanan yang diinginkan, mengisi informasi pengiriman, dan memilih metode pembayaran.
+
+3.2 Pengelolaan Pesanan oleh Admin
+
+Admin menerima pesanan yang masuk dan mengupdate status laundry (misalnya: sedang dicuci, selesai, atau dalam proses pengeringan). Sistem secara otomatis mengingatkan admin jika ada pesanan yang perlu diperhatikan.
+
+3.3 Pembayaran dan Penyelesaian Pesanan
+
+Pelanggan dapat melakukan pembayaran menggunakan berbagai metode yang telah disediakan (misalnya: kartu kredit, transfer bank, pembayaran tunai).
+
+Setelah pembayaran dikonfirmasi, status pesanan diubah menjadi "selesai", dan pelanggan diberitahu untuk mengambil laundry mereka.
+
+3.4 Pengambilan Laundry
+
+Pelanggan mengambil laundry mereka setelah status pesanan diperbarui menjadi selesai.
+
+4. Model Data
+
+Model data dalam MarshLaundryDb dirancang untuk menyimpan semua informasi yang diperlukan untuk pengelolaan pesanan dan transaksi. Berikut adalah beberapa model data yang digunakan:
+
+4.1 User Model
+
+Menyimpan data pengguna (pelanggan atau admin) termasuk nama, email, dan jenis akun.
+
+Digunakan untuk mengidentifikasi dan mengelola hak akses pengguna di sistem.
+
+4.2 Order Model
+
+Menyimpan informasi terkait setiap pesanan, termasuk jenis layanan, harga, status pesanan, dan ID pengguna yang terkait.
+
+Digunakan untuk melacak status laundry dari mulai pemesanan hingga pengambilan.
+
+4.3 Payment Model
+
+Menyimpan informasi terkait pembayaran untuk setiap pesanan, termasuk jumlah yang dibayar, metode pembayaran, dan status pembayaran.
+
+Digunakan untuk memproses pembayaran dan memverifikasi transaksi.
+
+5. Schema Tim dalam Mengelola Project
+
+Proyek MarshLaundryDb dikelola oleh tim yang terdiri dari beberapa role utama yang bekerja bersama untuk memastikan pengembangan proyek berjalan lancar:
+
+5.1 Frontend Developer
+
+Bertanggung jawab untuk pengembangan antarmuka pengguna menggunakan Bootstrap. Mereka memastikan desain aplikasi responsif dan menarik di berbagai perangkat.
+
+5.2 Backend Developer
+
+Bertanggung jawab untuk pengembangan API menggunakan ASP.NET, memastikan server backend dapat menangani permintaan dengan efisien dan aman.
+
+5.3 Database Administrator
+
+Mengelola MongoDB Compass untuk memastikan data tersimpan dengan baik dan aman. Mereka bertanggung jawab untuk merancang skema database dan melakukan pemeliharaan data.
+
+5.4 Project Manager
+
+Mengelola keseluruhan proyek, timeline, dan koordinasi antar tim. Mereka memastikan proyek tetap pada jalur yang benar dan memenuhi tujuan yang diinginkan.
+
+
+6. Mock Up 
